@@ -634,8 +634,16 @@ form a:hover {
 }
 
 @media (max-width: 888px) {
-    ::-webkit-scrollbar{
+    ::-webkit-scrollbar {
+        background: transparent;
         width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #34b2f1b0;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(---fast-color);
     }
     label #menu {
         display: block;
