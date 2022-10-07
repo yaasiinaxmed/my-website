@@ -434,7 +434,7 @@ label #close {
     margin-top: 4rem;
 }
 .project_content {
-    padding: 20px;
+    padding: 1.4em;
     display: flex;
     gap: 1em;
     z-index: 1;
@@ -467,7 +467,7 @@ label #close {
     background: var(---fast-color);
     color: white;
     border-radius: 5px;
-    box-shadow: inset 3px -3px 0 0 #2caae9;
+    box-shadow: inset 0 -3px 0 0 #2caae9;
 }
 .project__button:hover .button__icon {
     transform: translateX(.25rem);
@@ -707,7 +707,9 @@ form a:hover {
     .side-left {
         margin-top: 4em;
     }
-
+    .side-left h3 {
+        font-size: 3em;
+    }
     .side-right {
         margin-top: 2em;
 
@@ -763,6 +765,9 @@ form a:hover {
     }
     .project-container {
         grid-template-columns: 1fr;
+    }
+    .project__img {
+        width: 320px;
     }
     .input {
         width: 75vmin;
