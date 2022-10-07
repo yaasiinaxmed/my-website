@@ -239,7 +239,7 @@ label #close {
     background: var(---fast-color);
     color: white;
     border-radius: 5px;
-    box-shadow: inset 5px -5px 0 0 #2caae9;
+    box-shadow: inset 3px -3px 0 0 #2caae9;
 }
 
 .side-left a:hover {
@@ -269,6 +269,11 @@ label #close {
     font-size: 20px;
     color: var(---text-color);
     animation: text 1s ease-in-out;
+}
+.icons a {
+    font-size: 20px;
+    color: var(---text-color);
+    margin-top: -.5vmin;
 }
 .icons i:hover {
     color: var(---fast-color);
@@ -462,7 +467,7 @@ label #close {
     background: var(---fast-color);
     color: white;
     border-radius: 5px;
-    box-shadow: inset 5px -5px 0 0 #2caae9;
+    box-shadow: inset 3px -3px 0 0 #2caae9;
 }
 .project__button:hover .button__icon {
     transform: translateX(.25rem);
@@ -526,7 +531,7 @@ form a {
     background: var(---fast-color);
     color: white;
     border-radius: 5px;
-    box-shadow: inset 5px -5px 0 0 #2caae9;
+    box-shadow: inset 3px -3px 0 0 #2caae9;
 }
 form a:hover {
     background: var(---secont-color);
@@ -733,7 +738,7 @@ form a:hover {
     .box {
         margin: 1.5rem auto;
         width: 80vmin;
-        height: 8vmin;
+        height: 9vmin;
     }
     .section-projects {
         margin-top: .1rem;
