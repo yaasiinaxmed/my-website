@@ -724,6 +724,7 @@ form a:hover {
         display: flex;
         margin-left: 3vmin;
         padding: 1em;
+        margin-bottom: 1rem;
     }
     .container-skills {
         margin: auto;
