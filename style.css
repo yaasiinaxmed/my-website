@@ -165,7 +165,11 @@ label #close {
     }
 }
 .side-left h3 {
+    font-size: 2em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(---fast-color);
     position: relative;
+    top: .3em;
     z-index: -1;
 }
 .side-left h3::before {
@@ -728,7 +732,8 @@ form a:hover {
     }
     .box {
         margin: 1.5rem auto;
-
+        width: 80vmin;
+        height: 8vmin;
     }
     .section-projects {
         margin-top: .1rem;
