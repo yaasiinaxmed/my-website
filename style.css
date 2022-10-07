@@ -702,6 +702,8 @@ form a:hover {
         flex-direction: column;
         text-align: center;
         margin: auto;
+        padding-top: .1rem;
+        margin-top: 0;
     }
     
     .side-left {
