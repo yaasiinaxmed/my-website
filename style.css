@@ -610,7 +610,7 @@ form a:hover {
     }
     .side-left h3::after {
         position: absolute;
-        left: -5vmin;
+        left: -7vmin;
         top: 25vmin;
     }
 }
@@ -709,6 +709,10 @@ form a:hover {
     }
     .side-left h3 {
         font-size: 3em;
+    }
+    .side-left h3::after {
+        width: 18px;
+        height: 18px;
     }
     .side-right {
         margin-top: 2em;
