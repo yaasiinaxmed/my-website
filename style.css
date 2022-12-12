@@ -13,7 +13,7 @@
     ---last-color: #1572A1;
     ---text-color: #444343;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     background: transparent;
     width: 10px;
 }
@@ -23,7 +23,7 @@
 }
 ::-webkit-scrollbar-thumb:hover {
     background: var(---fast-color);
-}
+} */
 
 nav {
     position: fixed;
@@ -124,11 +124,7 @@ ul li a:hover {
     color: var(---fast-color);
 }
 
-#check {
-    display: none;
-}
 
-label #menu,
 label #close {
     float: right;
     font-size: 2em;
