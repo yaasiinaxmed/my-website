@@ -822,7 +822,7 @@ body.active::-webkit-scrollbar-thumb {
     }
 
     .container .nav-bar ul li a:hover span::before {
-        top: 23px;
+        top: 25px;
     }
 
     .container .main .home .side-left  {
