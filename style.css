@@ -821,6 +821,10 @@ body.active::-webkit-scrollbar-thumb {
         gap: 15px;
     }
 
+    .container .nav-bar ul li a:hover span::before {
+        top: 23px;
+    }
+
     .container .main .home .side-left  {
         font-size: 22px
     }
