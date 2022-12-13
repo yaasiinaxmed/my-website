@@ -825,6 +825,10 @@ body.active::-webkit-scrollbar-thumb {
         top: 25px;
     }
 
+    .container .nav-bar ul li a.active span::before {
+        top: 25px;
+    }
+
     .container .main .home .side-left  {
         font-size: 22px
     }
