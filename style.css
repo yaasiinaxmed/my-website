@@ -145,10 +145,6 @@ body.active::-webkit-scrollbar-thumb {
 }
 
 .container.active .nav-bar {
-    background: var();
-}
-
-.container.active .nav-bar {
     box-shadow: 0 0 2px var(--box-shadow-light);
 }
 
@@ -185,10 +181,6 @@ body.active::-webkit-scrollbar-thumb {
     position: absolute;
     top: -50px;
     z-index: 11;
-}
-
-.container.active .nav-bar ul li a:hover span {
-    background: var();
 }
 
 .container .nav-bar ul li a:hover span::before {
@@ -384,37 +376,62 @@ body.active::-webkit-scrollbar-thumb {
     color: var(--primary-color);
 }
 
-.container.active .main .home .side-left h2 span {
-    color: var();
-}
-
 .container .main .home .side-left h4 {
     font-size: 1em;
     padding-bottom: 1em;
 }
 
 .container .main .home .side-left a {
-    padding: 14px;
-    background: var(--primary-color);
-    color: var(--light-color);
-    border-radius: 2px;
-    box-shadow: inset 3px -3px 0 var(--box-shadow-3d);
+    padding: .5em .6em;
+    background: transparent;
+    border: 3px solid var(--primary-color);
+    text-align: center;
+    color: var(--primary-color);
     font-size: 0.8em;
+    border-radius: 2px;
+    position: relative;
 }
 
-.container.active .main .home .side-left a {
-    background-color: var();
+
+.container .main .home .side-left a:hover span {
+    position: relative;
+    z-index: 5;
+    color: var(--light-color);
+    transition: color 0.4s;
 }
 
-.container .main .home .side-left a:hover {
-    filter: brightness(0.9);
-    box-shadow: inset -3px 3px 0 var(--box-shadow-3d);
+.container .main .home .side-left a::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-color);
+    border: 5px solid var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 100ms;
+}
+
+.container .main .home .side-left a:hover::before {
+    transform: scale(1);
 }
 
 .container .main .home .side-right img {
     width: 560px;
     position: relative;
     top: -30px;
+    animation: img 1s ease-out;
+}
+
+@keyframes img {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .container .main .home .icons {
