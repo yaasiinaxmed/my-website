@@ -850,6 +850,10 @@ body.active::-webkit-scrollbar-thumb {
         font-size: 22px
     }
 
+    .container .main .home .side-left a {
+        border: 2px solid var(--primary-color);
+    }
+
     .container .main .home .icons {
         bottom: 95px;
         left: 10px;
