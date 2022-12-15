@@ -1410,4 +1410,9 @@ body {
     .container .main .contact .form .gird-input label[for="email"] {
         width: 47%;
     }
+
+    .container .footer {
+        margin-top: 20px;
+        height: 100%;
+    }
 }
