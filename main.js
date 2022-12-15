@@ -6,6 +6,57 @@ const navlink = document.querySelectorAll(".nav-bar ul li a");
 const sections = document.querySelectorAll("section");
 const iconToggle = toggleMode.querySelector("span i");
 const toggleTop = document.querySelector(".toggleTop");
+const form = document.querySelector(".form");
+const firstName = document.querySelector("#FirstName");
+const lastName = document.querySelector("#LastName");
+const emailForm = document.querySelector("#Email");
+const messageForm = document.querySelector("#message");
+
+let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+const checkEmail = (flex) => {
+    if (emailForm.value.match(regeX)) {
+        flex.classList.add("success");
+        flex.classList.remove("error");
+    } else {
+        flex.classList.add("error");
+        flex.classList.remove("success");
+    }
+}
+
+const checkEmpty = (grid,flex) => {
+    if (firstName.value === "") {
+        grid.classList.add("error");
+        grid.classList.remove("success");
+    } else {
+        grid.classList.add("success");
+        grid.classList.remove("error");
+    }
+
+    if (emailForm.value === "") {
+        flex.classList.add("error");
+        flex.classList.remove("success");
+    } else {
+        flex.classList.add("success");
+        flex.classList.remove("error");
+    }
+
+    if (messageForm.value === "") {
+        flex.classList.add("errorMessage");
+        flex.classList.remove("successMessage");
+    } else {
+        flex.classList.add("successMessage");
+        flex.classList.remove("errorMessage");
+    }
+}
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const gridInput = form.querySelector(".grid-input");
+    const flexInput = form.querySelector(".flex-input");
+    checkEmpty(gridInput,flexInput);
+    checkEmail(flexInput);
+});
 
 toggleTop.addEventListener("click", () => {
     window.scrollTo({
