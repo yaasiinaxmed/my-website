@@ -1393,3 +1393,21 @@ body {
         top: 150px;
     }
 }
+
+@media (max-width: 360px) {
+    .container .main .contact .title-contact {
+        top: 210px;
+    }
+
+    .container .main .contact .form {
+        top: 200px;
+    }
+
+    .container .main .contact .form .gird-input input[id="name"]:focus + label[for="name"] {
+        width: 47%;
+    }
+
+    .container .main .contact .form .gird-input label[for="email"] {
+        width: 47%;
+    }
+}
