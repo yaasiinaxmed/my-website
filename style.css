@@ -864,7 +864,7 @@ body {
     color: var(--light-gray-color);
 }
 
-.container .main .contact .form .gird-input label[for="name"] {
+.container .main .contact .form .gird-input label[for="FirstName"] {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -874,11 +874,11 @@ body {
     transition: width linear 0.4s;
 }
 
-.container .main .contact .form .gird-input input[id="name"]:focus + label[for="name"] {
+.container .main .contact .form .gird-input input[id="FirstName"]:focus + label[for="FirstName"] {
     width: 48.8%;
 }
 
-.container .main .contact .form .gird-input label[for="email"] {
+.container .main .contact .form .gird-input label[for="LastName"] {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -890,7 +890,7 @@ body {
     transition: transform linear 0.4s;
 }
 
-.container .main .contact .form .gird-input input[id="email"]:focus + label[for="email"] {
+.container .main .contact .form .gird-input input[id="LastName"]:focus + label[for="LastName"] {
     transform: scaleX(1);
 }
 
@@ -912,7 +912,7 @@ body {
     color: var(--light-gray-color);
 }
 
-.container .main .contact .form .flex-input label[for="subject"] {
+.container .main .contact .form .flex-input label[for="Email"] {
     position: absolute;
     top: 45px;
     left: 0;
@@ -922,7 +922,7 @@ body {
     transition: width linear 0.4s;
 }
 
-.container .main .contact .form .flex-input input[id="subject"]:focus + label[for="subject"] {
+.container .main .contact .form .flex-input input[id="Email"]:focus + label[for="Email"] {
     width: 100%;
 }
 
@@ -1403,7 +1403,7 @@ body {
         top: 200px;
     }
 
-    .container .main .contact .form .gird-input input[id="name"]:focus + label[for="name"] {
+    .container .main .contact .form .gird-input input[id="FirstName"]:focus + label[for="FirstName"] {
         width: 47%;
     }
 
