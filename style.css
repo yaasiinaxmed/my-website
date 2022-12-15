@@ -19,6 +19,7 @@
     --dark-color: #2b2a2a;
     --dark-box-color: #313131;
     --light-gray-color: #f8f8f8e3;
+    --input-color: #adadad21;
 }
 
 html {
@@ -30,6 +31,10 @@ svg {
     height: 20px;
 }
 
+input {
+    outline: none;
+    border: none;
+}
 
 iconify-icon {
     font-size: 24px;
@@ -58,6 +63,10 @@ body.active::-webkit-scrollbar-thumb {
 
 body.active {
     background-color: var(--dark-color);
+}
+
+body {
+    overflow-x: hidden
 }
 
 .container {
@@ -133,7 +142,7 @@ body.active {
     position: relative;
 }
 
-.container header .nav .toggle-mode::before {
+.container header .nav .toggle-mode span {
     position: absolute;
     content: "";
     top: 2px;
@@ -141,13 +150,19 @@ body.active {
     width: 30px;
     height: 30px;
     background: var(--light-color);
+    text-align: center;
+    line-height: 33px;
+    color: orange;
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--box-shadow);
+    box-shadow: 0 0 15px var(--box-shadow),
+               inset -3px 3px 3px var(--box-shadow);
     transition: 0.3s linear;
 }
 
-.container.active header .nav .toggle-mode::before {
+.container.active header .nav .toggle-mode span {
     left: 36px;
+    box-shadow: 0 0 15px var(--box-shadow),
+    inset 3px -3px 3px var(--box-shadow-3d);
 }
 
 /* navigation fixed navbar */
@@ -208,7 +223,7 @@ body.active {
     position: absolute;
     content: "";
     border: 6px solid var(--primary-color);
-    top: 21px;
+    top: 23px;
     left: 28px;
     transform: rotate(40deg);
     z-index: 10;
@@ -246,7 +261,7 @@ body.active {
     position: absolute;
     content: "";
     border: 6px solid var(--primary-color);
-    top: 21px;
+    top: 23px;
     left: 28px;
     transform: rotate(40deg);
     z-index: 10;
@@ -402,41 +417,40 @@ body.active {
     padding-bottom: 1em;
 }
 
-.container .main .home .side-left a {
-    padding: .5em .6em;
-    background: transparent;
+.container .main .home .side-left .btn {
+    padding: 14px;
     border: 3px solid var(--primary-color);
-    text-align: center;
+    background: transparent;
+    cursor: pointer;
     color: var(--primary-color);
-    font-size: 0.8em;
-    border-radius: 2px;
+    font-size: .9em;
     position: relative;
+    letter-spacing: 2px;
+    overflow: hidden !important;
 }
 
-
-.container .main .home .side-left a:hover span {
+.container .main .home .side-left .btn:hover span {
     position: relative;
     z-index: 5;
     color: var(--light-color);
     transition: color 0.4s;
 }
 
-.container .main .home .side-left a::before {
-    position: absolute;
+.container .main .home .side-left .btn::before {
     content: "";
+    position: absolute;
+    background: var(--primary-color);  
+    width: 0px;
+    height: 300px;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--primary-color);
-    border: 5px solid var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 100ms;
+    transition: width 0.5s linear ;
 }
 
-.container .main .home .side-left a:hover::before {
-    transform: scale(1);
+.container .main .home .side-left .btn:hover::before {
+    width: 300px;
 }
 
 .container .main .home .side-right img {
@@ -620,7 +634,7 @@ body.active {
     background: var(--light-color);
     border-radius: 50%;
     border: 9px solid var(--primary-color);
-    border-left-color: var(light-gray-color);
+    border-left-color: var(--light-gray-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -663,7 +677,7 @@ body.active {
 .container .main .work {
     width: 100%;
     height: 94vh;
-    padding-top: 10px;
+    padding: 10px 0;
 }
 
 .container .main .work .title-pro {
@@ -790,6 +804,229 @@ body.active {
     color: #ececece1;
 }
 
+/* contact section  */
+.container .main .contact {
+    width: 100%;
+    height: 90vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .main .contact .title-contact {
+    margin: 0 auto ;
+    text-align: center;
+    position: relative;
+    top: 34px;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    width: 145px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.container .main .contact .form {
+    width: 70%;
+    height: 90%;
+    position: relative;
+    top: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container .main .contact .form h4 {
+    font-size: 20px;
+    color: #686767;
+}
+
+.container.active .main .contact .form h4 {
+    color: #ccc;
+}
+
+.container .main .contact .form .gird-input {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    position: relative;
+}
+
+.container .main .contact .form .gird-input input {
+    width: 100%;
+    background: var(--input-color);
+    padding: 16px;
+    position: relative !important;
+}
+
+.container.active .main .contact .form .gird-input input {
+    color: var(--light-gray-color);
+}
+
+.container .main .contact .form .gird-input label[for="name"] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--primary-color);
+    transition: width linear 0.4s;
+}
+
+.container .main .contact .form .gird-input input[id="name"]:focus + label[for="name"] {
+    width: 48.8%;
+}
+
+.container .main .contact .form .gird-input label[for="email"] {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 48.8%;
+    height: 3px;
+    transform: scaleX(0);
+    background: var(--primary-color);
+    transform-origin: left;
+    transition: transform linear 0.4s;
+}
+
+.container .main .contact .form .gird-input input[id="email"]:focus + label[for="email"] {
+    transform: scaleX(1);
+}
+
+.container .main .contact .form .flex-input {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+.container .main .contact .form .flex-input input {
+    width: 100%;
+    background: var(--input-color);
+    padding: 14px;
+    position: relative;
+}
+
+.container.active .main .contact .form .flex-input input {
+    color: var(--light-gray-color);
+}
+
+.container .main .contact .form .flex-input label[for="subject"] {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--primary-color);
+    transition: width linear 0.4s;
+}
+
+.container .main .contact .form .flex-input input[id="subject"]:focus + label[for="subject"] {
+    width: 100%;
+}
+
+.container .main .contact .form .flex-input textarea {
+    width: 100%;
+    height: 160px;
+    border: none;
+    outline: none;
+    resize: none;
+    background: var(--input-color);
+    padding: 14px;
+}
+
+.container.active .main .contact .form .flex-input textarea {
+    color: var(--light-gray-color);
+}
+
+.container .main .contact .form .flex-input label[for="message"] {
+    position: absolute;
+    top: 225px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--primary-color);
+    transition: width linear 0.4s;
+}
+
+.container .main .contact .form .flex-input textarea[id="message"]:focus + label[for="message"] {
+    width: 100%;
+}
+
+.container .main .contact .form #btn {
+    width: 180px;
+    padding: 12px;
+    border: 3px solid var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.container .main .contact .form #btn  span {
+    position: relative;
+    z-index: 5;
+    transition: color 0.4s;
+}
+
+.container .main .contact .form #btn::before {
+    content: "";
+    position: absolute;
+    background: var(--primary-color);  
+    width: 0px;
+    height: 800px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: width 0.5s linear ;
+}
+
+.container .main .contact .form #btn:hover::before {
+    width: 400px;
+}
+
+.container .main .contact .form #btn:hover span {
+    color: var(--light-color);
+}
+
+.container .footer {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 40px;
+    padding: 20px 12%;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: var(--light-color);
+    background: var(--primary-color);
+}
+
+.container .footer span {
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.container .footer .toggleTop {
+    width: 50px;
+    height: 50px;
+    background: var(--light-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.container .footer .toggleTop:hover {
+    background: #ebeff3;
+}
+
 /*  design responsive */
 
 @media (max-width: 1393px) {
@@ -803,6 +1040,12 @@ body.active {
 
     .container .main .container-skills .skills .box.circle {
         right: 10px;
+    }
+}
+
+@media (max-width: 1272px) {
+    .container .main .work .projects .project:nth-child(5), .container .main .work .projects .project:last-of-type {
+        display: none;
     }
 }
 
@@ -825,6 +1068,11 @@ body.active {
 
     .container .main .container-skills .skills .box.circle {
         right: 3px;
+    }
+
+    .container .footer {
+        padding: 20px 6%;
+        padding-left: 3%;
     }
 }
 
@@ -896,6 +1144,30 @@ body.active {
     }
 }
 
+@media (max-width: 844px) {
+    .container .main .work .projects .project:nth-child(4) {
+        display: none;
+    }
+
+    .container .main .contact {
+        height: 100vh;
+        margin-top: 100px;
+    }
+
+    .container .main .contact .title-contact {
+        top: 145px;
+    }
+
+    .container .main .contact .form {
+        top: 145px;
+        width: 85%;
+    }
+
+    .container .footer {
+        height: 110px;
+    }
+}
+
 @media (max-width: 768px) {
     .container header .nav {
         width: 80%;
@@ -908,10 +1180,6 @@ body.active {
     .container .main {
         width: 80%;
     }
-
-    /* .container .main .home {
-        margin-top: 50px;
-    } */
 
     .container .main .home .side-left {
         position: relative;
@@ -929,8 +1197,31 @@ body.active {
         left: 15px;
     }
 
+    .container .main .work {
+        height: 110vh
+    }
+
     .container .main .work .projects .project {
         width: 100%;
+    }
+
+    .container .main .contact {
+        height: 100vh;
+        margin-top: 50px;
+    }
+
+    .container .main .contact .title-contact {
+        top: 125px;
+    }
+
+    .container .main .contact .form {
+        top: 145px;
+        width: 100%;
+    }
+
+    .container .main .contact .form #btn {
+        width: 150px;
+        font-size: 0.8em;
     }
 }
 
@@ -961,6 +1252,10 @@ body.active {
         width: 100%;
         height: 9vmin;
     }
+
+    .container .main .contact .form {
+        width: 130%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -976,6 +1271,16 @@ body.active {
     .container .main .home .icons {
         bottom: 100px;
         left: 10px;
+    }
+
+    .container .footer {
+        justify-content: center;
+        font-size: 16px;
+        line-height: 100px;
+    }
+
+    .container .footer .toggleTop {
+        display: none;
     }
 }
 
@@ -993,20 +1298,16 @@ body.active {
         gap: 15px;
     }
 
-    .container .nav-bar ul li a:hover span::before {
+    /* .container .nav-bar ul li a:hover span::before {
         top: 25px;
     }
 
     .container .nav-bar ul li a.active span::before {
         top: 25px;
-    }
+    } */
 
     .container .main .home .side-left  {
         font-size: 22px
-    }
-
-    .container .main .home .side-left a {
-        border: 2px solid var(--primary-color);
     }
 
     .container .main .home .icons {
@@ -1038,6 +1339,23 @@ body.active {
         width: 250px;
         height: 250px;
     }
+
+    .container .main .contact .title-contact {
+        top: 135px;
+    }
+
+    .container .main .contact .form {
+        width: 150%;
+    }
+
+    .container .main .contact .form .gird-input input[id="name"]:focus + label[for="name"] {
+        width: 48%;
+    }
+
+    .container .main .contact .form .gird-input label[for="email"] {
+        width: 48%;
+    }
+
 }
 
 @media (max-width: 390px) {

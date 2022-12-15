@@ -14,7 +14,9 @@
         <header>
             <nav class="nav">
                 <h2 class="logo">Yaasiin <span>Ahmed</span></h2>
-                <div class="toggle-mode"></div>
+                <div class="toggle-mode">
+                    <span><i class="bi bi-moon-fill"></i></span>
+                </div>
             </nav>
         </header>
         <div class="nav-bar">
@@ -31,7 +33,7 @@
                     <h3 data-text="Hello">Hello!</h3>
                     <h2>I am Yaasiin <span>Ahmed </span></h2>
                     <h4>Web Developer</h4>
-                    <a href="#contact"><span>Contact Me ↲</span></a>
+                    <button class="btn"><span>Contact me!</span></button>
                 </div>
                 <div class="side-right">
                     <img src="images/home.png" alt="">
@@ -257,7 +259,32 @@
                     </div>
                 </div>
             </section>
+            <section id="contact" class="contact">
+                <h2 class="title-contact">Contact</h2>
+                <form class="form">
+                    <h4>Get In Touch Me</h4>
+                    <div class="gird-input">
+                        <input type="text" id="name" placeholder="Name">
+                        <label for="name"></label>
+                        <input type="text" id="email" placeholder="Email">
+                        <label for="email"></label>
+                    </div>
+                    <div class="flex-input">
+                        <input type="text" id="subject" placeholder="Subject">
+                        <label for="subject"></label>
+                        <textarea id="message" placeholder="Message"></textarea>
+                        <label for="message"></label>
+                    </div>
+                    <button type="submit" id="btn"><span>Send Message</span></button>
+                </form>
+            </section>
         </main>
+        <footer class="footer">
+            <span>&copy; Yaasiin Ahmed. All rigths reserved</span>
+            <div class="toggleTop">
+                <i class="bi bi-chevron-up"></i>
+            </div>
+        </footer>
     </div>
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <script src="./main.js"></script>
