@@ -151,7 +151,7 @@ body {
     height: 30px;
     background: var(--light-color);
     text-align: center;
-    line-height: 33px;
+    line-height: 30px;
     color: orange;
     border-radius: 50%;
     box-shadow: 0 0 15px var(--box-shadow),
@@ -1387,5 +1387,9 @@ body {
 @media (max-width: 370px) {
     .container .main .home .side-left  {
         font-size: 18px
+    }
+
+    .container .main .contact .title-contact {
+        top: 150px;
     }
 }
