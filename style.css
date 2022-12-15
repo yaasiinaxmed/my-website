@@ -69,6 +69,14 @@ body {
     overflow-x: hidden
 }
 
+.container.active input::placeholder {
+    color: #979595;
+}
+
+.container.active textarea::placeholder {
+    color: #979595;
+}
+
 .container {
     width: 100%;
     background: var(--light-color);
