@@ -1437,6 +1437,16 @@ body {
         width: 47%;
     }
 
+    .container .main .contact .form .grid-input.error label[for="FirstName"] {
+        background: #ee0808;
+        width: 47%
+    }
+    
+    .container .main .contact .form .grid-input.success label[for="FirstName"] {
+        background: #1eb81e;
+        width: 47%
+    }
+
     .container .main .contact .form .grid-input label[for="email"] {
         width: 47%;
     }
