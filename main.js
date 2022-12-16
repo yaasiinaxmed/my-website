@@ -12,6 +12,7 @@ const lastName = document.querySelector("#LastName");
 const emailForm = document.querySelector("#Email");
 const messageForm = document.querySelector("#message");
 const projects = document.querySelectorAll(".project");
+const alertMsg = document.querySelector(".msgBox");
 
 window.addEventListener("scroll", checkBox);
 window.addEventListener("scroll", activeLink);
@@ -45,28 +46,38 @@ function sendMail(){
         emailForm.value = "";
         messageForm.value = "";
         console.log(res);
-        alert("you message send succesfully");
+        alertMsg.classList.remove("error");
+        alertMsg.classList.add("successMsg");
+        setTimeout(() => {
+           alertMsg.classList.remove("successMsg");
+        },3000)
     })
     .catch((err) => console.log(err));
 }
 
 let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-const checkEmail = (flex) => {
+const checkEmail = (flex,grid) => {
     if (emailForm.value.match(regeX)) {
         flex.classList.add("success");
         flex.classList.remove("error");
         setTimeout(() => {
             sendMail();
-        },2000);
+            flex.classList.remove("success");
+            grid.classList.remove("success");
+            flex.classList.remove("successMessage");
+        },100);
     } else {
         flex.classList.add("error");
         flex.classList.remove("success");
-        remove(sendMail());
-    }
-}
+        alertMsg.classList.add("error");
+        setTimeout(() => {
+            alertMsg.classList.remove("error");
+        }, 3000);
+    };
+};
 
-const checkEmpty = (grid,flex) => {
+function checkEmpty(grid,flex){
     if (firstName.value === "") {
         grid.classList.add("error");
         grid.classList.remove("success");
@@ -98,7 +109,7 @@ form.addEventListener("submit", (e) => {
     const flexInput = form.querySelector(".flex-input");
 
     checkEmpty(gridInput,flexInput);
-    checkEmail(flexInput);
+    checkEmail(flexInput,gridInput);
 });
 
 toggleTop.addEventListener("click", () => {

@@ -851,6 +851,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .container .main .contact .title-contact {
@@ -872,7 +873,7 @@ body {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .container .main .contact .form h4 {
@@ -882,6 +883,106 @@ body {
 
 .container.active .main .contact .form h4 {
     color: #ccc;
+}
+
+.container .main .contact .form .msgBox {
+   position: absolute;
+   bottom: 100px;
+   right: -55%;
+   width: 300px;
+   padding: 16px;
+   background: var(--light-color);
+   color: var(--txt-color);
+   display: flex;
+   gap: 10px;
+   box-shadow: 0 0 10px var(--box-shadow);
+   z-index: 12;
+   display: none;
+}
+
+.container .main .contact .form .msgBox::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-color);
+    animation: msg linear 3s ;
+}
+
+@keyframes msg {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.container .main .contact .form .msgBox.successMsg {
+    display: flex;
+}
+
+.container .main .contact .form .msgBox.successMsg::before {
+    background: #36a836
+}
+
+
+.container .main .contact .form .msgBox.error {
+    display: flex;
+}
+
+.container.active .main .contact .form .msgBox {
+    background: var(--dark-box-color);
+    color: var(--light-gray-color);
+}
+
+.container .main .contact .form .msgBox.successMsg .successIcon {
+    color: #36a836;
+}
+
+.container .main .contact .form .msgBox .errorIcon {
+    display: none;
+}
+
+.container .main .contact .form .msgBox.error .successIcon {
+    display: none;
+}
+
+.container .main .contact .form .msgBox.error::before {
+    background: #ee0808;
+}
+
+.container .main .contact .form .msgBox.error  .successText {
+    display: none;
+}
+
+.container .main .contact .form .msgBox.successMsg .successText {
+    display: block;
+}
+
+.container .main .contact .form .msgBox.error .errorIcon {
+    display: block;
+    color: #ee0808;
+}
+
+.container.active .main .contact .form .msgBox.error .errorIcon {
+    color: #f05151;
+}
+
+.container .main .contact .form .msgBox.successMsg .errorIcon {
+    display: none;
+}
+
+.container .main .contact .form .msgBox.error .errorText {
+    display: block;
+}
+
+.container .main .contact .form .msgBox.successMsg .errorText {
+    display: none;
 }
 
 .container .main .contact .form .grid-input {
@@ -1097,6 +1198,25 @@ body {
 
 /*  design responsive */
 
+@media (max-width: 1393.75px) {
+    .container .main {
+        width: 90%;
+    }
+
+    .container .main .contact {
+        height: 100vh;
+        margin-top: 85px;
+    }
+
+    .container .main .home .icons {
+       bottom: 80px;
+    }
+
+    .container .main .contact .form .msgBox {
+        right: -30%;
+    }
+}
+
 @media (max-width: 1393px) {
     .container header .nav {
         width: 80%;
@@ -1111,7 +1231,9 @@ body {
     }
 }
 
-@media (max-width: 1272px) {
+
+
+@media (max-width: 1278px) {
     .container .main .work .projects .project:nth-child(5), .container .main .work .projects .project:last-of-type {
         display: none;
     }
@@ -1209,6 +1331,11 @@ body {
 
     .container .main .container-skills .skills .box.circle {
         position: relative;
+    }
+
+    .container .main .contact .form .msgBox {
+        bottom: 145px;
+        right: -10%;
     }
 }
 
@@ -1323,6 +1450,11 @@ body {
 
     .container .main .contact .form {
         width: 130%;
+    }
+
+    .container .main .contact .form .msgBox {
+        bottom: 150px;
+        right: 10%;
     }
 }
 
@@ -1488,6 +1620,11 @@ body {
 
     .container .main .contact .form {
         top: 200px;
+    }
+
+    .container .main .contact .form .msgBox {
+        bottom: 165px;
+        right: 5%;
     }
 
     .container .footer {

@@ -271,7 +271,12 @@
                 <h2 class="title-contact">Contact</h2>
                 <form class="form">
                     <h4>Get In Touch Me</h4>
-                    <small>Error input</small>
+                    <div class="msgBox">
+                        <i class="bi bi-check-circle-fill successIcon"></i> 
+                        <i class="bi bi-x-circle-fill errorIcon"></i> 
+                        <span class="successText">Your message has been successfully sent</span>
+                        <span class="errorText">Your message failed because the email address is not valid</span>
+                    </div>
                     <div class="grid-input">
                         <input type="text" id="FirstName" placeholder="First Name">
                         <label for="FirstName"></label>
