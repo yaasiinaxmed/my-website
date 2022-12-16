@@ -11,6 +11,44 @@ const firstName = document.querySelector("#FirstName");
 const lastName = document.querySelector("#LastName");
 const emailForm = document.querySelector("#Email");
 const messageForm = document.querySelector("#message");
+const projects = document.querySelectorAll(".project");
+
+window.addEventListener("scroll", checkBox);
+window.addEventListener("scroll", activeLink);
+window.addEventListener("scroll", animationPro);
+
+window.addEventListener("load", () => {
+    projects.forEach(pro => {
+        pro.classList.add("show");
+    });
+
+    boxs.forEach(box => {
+        box.classList.add("show");
+    });
+
+});
+
+function sendMail(){
+    var params = {
+        name: firstName.value + lastName.value,
+        email: emailForm.value,
+        message: messageForm.value,
+    };
+
+    const serviceID = "service_ss0jhng";
+    const templateID = "template_qyv0rbd";
+
+    emailjs.send(serviceID,templateID,params)
+    .then((res) => {
+        firstName.value = "";
+        lastName.value = "";
+        emailForm.value = "";
+        messageForm.value = "";
+        console.log(res);
+        alert("you message send succesfully");
+    })
+    .catch((err) => console.log(err));
+}
 
 let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -18,9 +56,13 @@ const checkEmail = (flex) => {
     if (emailForm.value.match(regeX)) {
         flex.classList.add("success");
         flex.classList.remove("error");
+        setTimeout(() => {
+            sendMail();
+        },2000);
     } else {
         flex.classList.add("error");
         flex.classList.remove("success");
+        remove(sendMail());
     }
 }
 
@@ -54,6 +96,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     const gridInput = form.querySelector(".grid-input");
     const flexInput = form.querySelector(".flex-input");
+
     checkEmpty(gridInput,flexInput);
     checkEmail(flexInput);
 });
@@ -64,9 +107,6 @@ toggleTop.addEventListener("click", () => {
         behavior: "smooth",
     });
 });
-
-window.addEventListener("scroll", checkBox);
-window.addEventListener("scroll", activeLink);
 
 toggleMode.addEventListener("click", () => {
     container.classList.toggle("active");
@@ -112,3 +152,17 @@ function activeLink() {
     });
 };
 
+
+function animationPro() {
+    const triggerBottom = window.innerHeight / 5 * 4;
+
+    projects.forEach(pro => {
+        const topPro = pro.getBoundingClientRect().top;
+
+        if(triggerBottom < topPro) {
+            pro.classList.remove("show");
+        } else {
+            pro.classList.add("show");
+        };
+    });
+};

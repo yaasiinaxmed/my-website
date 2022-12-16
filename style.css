@@ -85,6 +85,10 @@ body {
     animation: opacity 0.4s;
 }
 
+.container.active * {
+    transition: 0.8s;
+}
+
 @keyframes opacity {
     form {
         opacity: 0;
@@ -227,6 +231,10 @@ body {
     z-index: 11;
 }
 
+.container.active .nav-bar ul li a:hover span {
+    transition: none;
+}
+
 .container .nav-bar ul li a:hover span::before {
     position: absolute;
     content: "";
@@ -235,6 +243,11 @@ body {
     left: 28px;
     transform: rotate(40deg);
     z-index: 10;
+    transition: none;
+}
+
+.container.active .nav-bar ul li a:hover span::before {
+    transition: none;
 }
 
 .container .nav-bar ul li:last-child a:hover span::before {
@@ -265,6 +278,10 @@ body {
     z-index: 11;
 }
 
+.container.active .nav-bar ul li a.active span {
+    transition: none;
+}
+
 .container .nav-bar ul li a.active span::before {
     position: absolute;
     content: "";
@@ -273,6 +290,11 @@ body {
     left: 28px;
     transform: rotate(40deg);
     z-index: 10;
+    transition: none;
+}
+
+.container.active .nav-bar ul li a.active span::before {
+    transition: none;
 }
 
 .container .nav-bar ul li a.active {
@@ -726,6 +748,14 @@ body {
     border-top: 4px solid var(--primary-color);
     border-radius: 4px;
     cursor: pointer;
+    transform: scale(0.6);
+    opacity: 0.2;
+    transition: transform 0.5s , opacity 0.5s;
+}
+
+.container .main .work .projects .project.show {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .container .main .work .projects .project:hover {
@@ -1394,6 +1424,25 @@ body {
         width: 48%;
     }
 
+    .container .main .contact .form .grid-input input[id="FirstName"]:focus + label[for="FirstName"] {
+        width: 47%;
+    }
+
+    .container .main .contact .form .grid-input.error label[for="FirstName"] {
+        background: #ee0808;
+        width: 47%
+    }
+    
+    .container .main .contact .form .grid-input.success label[for="FirstName"] {
+        background: #1eb81e;
+        width: 47%
+    }
+
+    .container .main .contact .form .grid-input label[for="LastName"] {
+        width: 47%;
+    }
+
+
 }
 
 @media (max-width: 390px) {
@@ -1439,24 +1488,6 @@ body {
 
     .container .main .contact .form {
         top: 200px;
-    }
-
-    .container .main .contact .form .grid-input input[id="FirstName"]:focus + label[for="FirstName"] {
-        width: 47%;
-    }
-
-    .container .main .contact .form .grid-input.error label[for="FirstName"] {
-        background: #ee0808;
-        width: 47%
-    }
-    
-    .container .main .contact .form .grid-input.success label[for="FirstName"] {
-        background: #1eb81e;
-        width: 47%
-    }
-
-    .container .main .contact .form .grid-input label[for="LastName"] {
-        width: 47%;
     }
 
     .container .footer {
