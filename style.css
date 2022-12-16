@@ -9,6 +9,7 @@
     text-decoration: none;
 }
 
+/* css variables colors */
 :root {
     --primary-color: #0077ff;
     --txt-color: #555;
@@ -85,9 +86,9 @@ body {
     animation: opacity 0.4s;
 }
 
-.container.active * {
+/* .container.active * {
     transition: 0.8s;
-}
+} */
 
 @keyframes opacity {
     form {
@@ -702,7 +703,7 @@ body {
     color: var(--light-color);
 }
 
-/* projects section */
+/* work section */
 
 .container .main .work {
     width: 100%;
@@ -1162,6 +1163,7 @@ body {
     color: var(--light-color);
 }
 
+/* footer */
 .container .footer {
     width: 100%;
     height: 90px;

@@ -1,3 +1,4 @@
+// DOM variables
 const toggleMode = document.querySelector(".toggle-mode");
 const container = document.querySelector(".container");
 const body = document.querySelector("body");
@@ -14,10 +15,12 @@ const messageForm = document.querySelector("#message");
 const projects = document.querySelectorAll(".project");
 const alertMsg = document.querySelector(".msgBox");
 
+// window eventListener 
 window.addEventListener("scroll", checkBox);
 window.addEventListener("scroll", activeLink);
 window.addEventListener("scroll", animationPro);
 
+// animation load projects
 window.addEventListener("load", () => {
     projects.forEach(pro => {
         pro.classList.add("show");
@@ -29,9 +32,11 @@ window.addEventListener("load", () => {
 
 });
 
+// message send my email 
+
 function sendMail(){
     var params = {
-        name: firstName.value + lastName.value,
+        name:  firstName.value + lastName.value,
         email: emailForm.value,
         message: messageForm.value,
     };
@@ -55,6 +60,7 @@ function sendMail(){
     .catch((err) => console.log(err));
 }
 
+//  check Email validation
 let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const checkEmail = (flex,grid) => {
@@ -66,7 +72,7 @@ const checkEmail = (flex,grid) => {
             flex.classList.remove("success");
             grid.classList.remove("success");
             flex.classList.remove("successMessage");
-        },100);
+        },1000);
     } else {
         flex.classList.add("error");
         flex.classList.remove("success");
@@ -77,6 +83,7 @@ const checkEmail = (flex,grid) => {
     };
 };
 
+// check Empty inputs
 function checkEmpty(grid,flex){
     if (firstName.value === "") {
         grid.classList.add("error");
@@ -103,6 +110,7 @@ function checkEmpty(grid,flex){
     }
 }
 
+// form submit 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const gridInput = form.querySelector(".grid-input");
@@ -112,6 +120,7 @@ form.addEventListener("submit", (e) => {
     checkEmail(flexInput,gridInput);
 });
 
+// toggle top footer 
 toggleTop.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
@@ -119,12 +128,14 @@ toggleTop.addEventListener("click", () => {
     });
 });
 
+// eventListener dark mode 
 toggleMode.addEventListener("click", () => {
     container.classList.toggle("active");
     body.classList.toggle("active");
     changeIcon(container,body)
 });
 
+//  change icon dark mode 
 function changeIcon(container,body) {
     if(container.classList.contains("active") && body.classList.contains("active")) {
         iconToggle.classList.replace("bi-moon-fill", "bi-brightness-high-fill");
@@ -133,6 +144,7 @@ function changeIcon(container,body) {
     }
 };
 
+// aniamtion skills 
 function checkBox() {
    const triggerBottom = window.innerHeight / 5 * 4;
    boxs.forEach(box => {
@@ -146,6 +158,7 @@ function checkBox() {
    });
 };
 
+// active navigations
 function activeLink() {
     let id = '';
 
@@ -163,7 +176,7 @@ function activeLink() {
     });
 };
 
-
+// animation projects
 function animationPro() {
     const triggerBottom = window.innerHeight / 5 * 4;
 
