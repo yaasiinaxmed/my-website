@@ -32,6 +32,52 @@ window.addEventListener("load", () => {
 
 });
 
+// create alertDetails 
+const alertDetail = {
+    timer: 5000,
+    success: {
+        icon: "bi-check-circle-fill",
+        text: "Your message has been successfully sent"
+    },
+    error: {
+        icon: "bi-x-circle-fill",
+        text: "Please fill in all required fields",
+    }
+}
+
+// remove alert 
+const removeAlert = (alert) => {
+    if(alert.classList.contains("hiden")) {
+        alert.classList.remove("hiden");
+    } else {
+        alert.classList.add("hiden");
+    };
+
+    setTimeout(() => {
+        alert.remove();
+    },1000);
+};
+
+// create alert elements
+const createAlert = (id) => {
+    const {icon, text} = alertDetail[id];
+    const alertDiv = document.createElement("div");
+    alertDiv.className = `alert ${id}`;
+    alertDiv.innerHTML = `<div class="column">
+     <i class="bi ${icon}"></i> 
+     <span>${text}</span>
+     </div>
+     <i class="fa fa-xmark"></i>`;
+
+    alertMsg.prepend(alertDiv);
+    setTimeout(() => {
+        removeAlert(alertDiv);
+    },5000);
+
+    const removeIcon = alertDiv.querySelector(".fa-xmark");
+    removeIcon.addEventListener("click", () => removeAlert(alertDiv));
+};
+
 // message send my email 
 
 function sendMail(){
@@ -51,11 +97,6 @@ function sendMail(){
         emailForm.value = "";
         messageForm.value = "";
         console.log(res);
-        alertMsg.classList.remove("error");
-        alertMsg.classList.add("successMsg");
-        setTimeout(() => {
-           alertMsg.classList.remove("successMsg");
-        },3000)
     })
     .catch((err) => console.log(err));
 }
@@ -65,21 +106,15 @@ let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const checkEmail = (flex,grid) => {
     if (emailForm.value.match(regeX)) {
-        flex.classList.add("success");
-        flex.classList.remove("error");
+        flex.id = 'success';
         setTimeout(() => {
             sendMail();
-            flex.classList.remove("success");
+            flex.removeAttribute("id");
             grid.classList.remove("success");
             flex.classList.remove("successMessage");
         },1000);
     } else {
-        flex.classList.add("error");
-        flex.classList.remove("success");
-        alertMsg.classList.add("error");
-        setTimeout(() => {
-            alertMsg.classList.remove("error");
-        }, 3000);
+        flex.id = 'error';
     };
 };
 
@@ -118,6 +153,7 @@ form.addEventListener("submit", (e) => {
 
     checkEmpty(gridInput,flexInput);
     checkEmail(flexInput,gridInput);
+    createAlert(flexInput.id);
 });
 
 // toggle top footer 

@@ -84,6 +84,7 @@ body {
     position: relative;
     transition: 0.2s;
     animation: opacity 0.4s;
+    overflow-y: hidden;
 }
 
 /* .container.active * {
@@ -888,102 +889,123 @@ body {
 
 .container .main .contact .form .msgBox {
    position: absolute;
-   bottom: 100px;
-   right: -55%;
-   width: 300px;
-   padding: 16px;
-   background: var(--light-color);
-   color: var(--txt-color);
-   display: flex;
-   gap: 10px;
-   box-shadow: 0 0 10px var(--box-shadow);
-   z-index: 12;
-   display: none;
+   bottom: 0%;
+   left: 70%;
+   width: 100%;
+   height: 100%;
 }
 
-.container .main .contact .form .msgBox::before {
+.container .main .contact .form .msgBox .alert {
+    position: fixed;
+    /* top: 60%; */
+    left: 40%;
+    width: 380px;
+    background: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: var(--light-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden !important;
+    z-index: 10;
+    animation: show__alert 1s ease forwards;
+}
+
+@keyframes show__alert {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-5%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+} 
+
+.container .main .contact .form .msgBox .alert.hiden {
+    animation: hiden__alert 1s ease forwards;
+}
+
+@keyframes hiden__alert {
+    0% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(-5%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(calc(100% + 70px));
+    }
+}
+
+.container .main .contact .form .msgBox .alert.error .column {
+    font-size: 16px;
+}
+
+.container .main .contact .form .msgBox .alert .column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container .main .contact .form .msgBox .alert i:last-child {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.container .main .contact .form .msgBox .alert i:last-child:hover {
+    color: var(--primary-color);
+}
+
+.container .main .contact .form .msgBox .alert.success  .column i {
+    color: #30b90e;
+}
+
+.container .main .contact .form .msgBox .alert.error  .column i {
+    color: #ee0808;
+}
+
+.container .main .contact .form .msgBox .alert::before {
     position: absolute;
     content: '';
     bottom: 0;
     left: 0;
     right: 0;
-    width: 0;
+    width: 100%;
     height: 3px;
     background: var(--primary-color);
-    animation: msg linear 3s ;
+    animation: progress 5s ease forwards;
 }
 
-@keyframes msg {
-    from {
+@keyframes progress {
+    100% {
         width: 0;
     }
-
-    to {
-        width: 100%;
-    }
 }
 
-.container .main .contact .form .msgBox.successMsg {
-    display: flex;
+.container .main .contact .form .msgBox .alert.success::before {
+    background: #30b90e;
 }
 
-.container .main .contact .form .msgBox.successMsg::before {
-    background: #36a836
-}
-
-
-.container .main .contact .form .msgBox.error {
-    display: flex;
-}
-
-.container.active .main .contact .form .msgBox {
-    background: var(--dark-box-color);
-    color: var(--light-gray-color);
-}
-
-.container .main .contact .form .msgBox.successMsg .successIcon {
-    color: #36a836;
-}
-
-.container .main .contact .form .msgBox .errorIcon {
-    display: none;
-}
-
-.container .main .contact .form .msgBox.error .successIcon {
-    display: none;
-}
-
-.container .main .contact .form .msgBox.error::before {
+.container .main .contact .form .msgBox .alert.error::before {
     background: #ee0808;
 }
 
-.container .main .contact .form .msgBox.error  .successText {
-    display: none;
-}
-
-.container .main .contact .form .msgBox.successMsg .successText {
-    display: block;
-}
-
-.container .main .contact .form .msgBox.error .errorIcon {
-    display: block;
-    color: #ee0808;
-}
-
-.container.active .main .contact .form .msgBox.error .errorIcon {
-    color: #f05151;
-}
-
-.container .main .contact .form .msgBox.successMsg .errorIcon {
-    display: none;
-}
-
-.container .main .contact .form .msgBox.error .errorText {
-    display: block;
-}
-
-.container .main .contact .form .msgBox.successMsg .errorText {
-    display: none;
+.container.active .main .contact .form .msgBox .alert{
+    background: var(--dark-box-color);
+    color: var(--light-gray-color);
 }
 
 .container .main .contact .form .grid-input {
@@ -1072,12 +1094,12 @@ body {
     transition: width linear 0.4s;
 }
 
-.container .main .contact .form .flex-input.error label[for="Email"] {
+.container .main .contact .form #error label[for="Email"] {
     background: #ee0808;
     width: 100%;
 }
 
-.container .main .contact .form .flex-input.success label[for="Email"] {
+.container .main .contact .form #success label[for="Email"] {
     background: #30b90e;
     width: 100%;
 }
@@ -1125,6 +1147,7 @@ body {
 }
 
 .container .main .contact .form #btn {
+    margin-top: 10px;
     width: 180px;
     padding: 12px;
     border: 3px solid var(--primary-color);
@@ -1155,17 +1178,17 @@ body {
     transition: width 0.5s linear ;
 }
 
-.container .main .contact .form #btn:hover::before {
+.container .main .contact .form #btn:is(:focus, :hover):before {
     width: 400px;
 }
 
-.container .main .contact .form #btn:hover span {
+.container .main .contact .form #btn:is(:hover, :focus) span {
     color: var(--light-color);
 }
 
 /* footer */
 .container .footer {
-    width: 100%;
+    width: 100% !important;
     height: 90px;
     display: flex;
     align-items: center;
@@ -1214,8 +1237,8 @@ body {
        bottom: 80px;
     }
 
-    .container .main .contact .form .msgBox {
-        right: -30%;
+    .container .main .contact .form .msgBox .alert {
+        left: 15%;
     }
 }
 
@@ -1238,6 +1261,10 @@ body {
 @media (max-width: 1278px) {
     .container .main .work .projects .project:nth-child(5), .container .main .work .projects .project:last-of-type {
         display: none;
+    }
+
+    .container .main .contact .form .msgBox .alert {
+        left: 10%;
     }
 }
 
@@ -1265,6 +1292,10 @@ body {
     .container .footer {
         padding: 20px 6%;
         padding-left: 3%;
+    }
+
+    .container .main .contact .form .msgBox .alert {
+        left: -10%;
     }
 }
 
@@ -1334,11 +1365,6 @@ body {
     .container .main .container-skills .skills .box.circle {
         position: relative;
     }
-
-    .container .main .contact .form .msgBox {
-        bottom: 145px;
-        right: -10%;
-    }
 }
 
 @media (max-width: 844px) {
@@ -1362,6 +1388,11 @@ body {
 
     .container .footer {
         height: 110px;
+    }
+
+    .container .main .contact .form .msgBox .alert {
+        top: 50%;
+        left: -20%;
     }
 }
 
@@ -1420,6 +1451,17 @@ body {
         width: 150px;
         font-size: 0.8em;
     }
+
+    .container .main .contact .form .msgBox .alert {
+        top: 50%;
+        left: -30%;
+    }
+}
+
+@media (max-width: 660px) {
+    .container .main .contact .form .msgBox .alert {
+        left: -40%;
+    }
 }
 
 @media (max-width: 580px) {
@@ -1454,10 +1496,10 @@ body {
         width: 130%;
     }
 
-    .container .main .contact .form .msgBox {
-        bottom: 150px;
-        right: 10%;
+    .container .main .contact .form .msgBox .alert {
+        left: -50%;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -1473,6 +1515,10 @@ body {
     .container .main .home .icons {
         bottom: 100px;
         left: 10px;
+    }
+
+    .container .main .contact .form .msgBox .alert {
+        left: -60%;
     }
 
     .container .footer {
@@ -1550,6 +1596,12 @@ body {
         width: 150%;
     }
 
+    .container .main .contact .form .msgBox .alert {
+        width: 360px;
+        top: 0;
+        left: -62%;
+    }
+
     .container .main .contact .form .grid-input input[id="name"]:focus + label[for="name"] {
         width: 48%;
     }
@@ -1603,11 +1655,23 @@ body {
     .container .main .container-skills .skills .box i h2 {
         font-size: 14px;
     }
+
+    .container .main .contact .form .msgBox .alert {
+        top: -10%;
+        left: -65%;
+    }
 }
 
 @media (max-width: 370px) {
     .container .main .home .side-left  {
         font-size: 18px
+    }
+
+    .container .main .contact .form .msgBox .alert {
+        width: 340px;
+        top: 0;
+        left: -65%;
+        font-size: 16px;
     }
 
     .container .main .contact .title-contact {
@@ -1624,9 +1688,10 @@ body {
         top: 200px;
     }
 
-    .container .main .contact .form .msgBox {
-        bottom: 165px;
-        right: 5%;
+    .container .main .contact .form .msgBox .alert {
+        width: 338px;
+        left: -65%;
+        font-size: 15px;
     }
 
     .container .footer {
