@@ -43,7 +43,7 @@ const alertDetail = {
         icon: "bi-x-circle-fill",
         text: "Please fill in all required fields",
     }
-}
+};
 
 // remove alert 
 const removeAlert = (alert) => {
@@ -87,7 +87,7 @@ function sendMail(){
         message: messageForm.value,
     };
 
-    const serviceID = "service_ss0jhng";
+    const serviceID = "service_24vr37q";
     const templateID = "template_qyv0rbd";
 
     emailjs.send(serviceID,templateID,params)
@@ -99,7 +99,7 @@ function sendMail(){
         console.log(res);
     })
     .catch((err) => console.log(err));
-}
+};
 
 //  check Email validation
 let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -143,7 +143,7 @@ function checkEmpty(grid,flex){
         flex.classList.add("successMessage");
         flex.classList.remove("errorMessage");
     }
-}
+};
 
 // form submit 
 form.addEventListener("submit", (e) => {
