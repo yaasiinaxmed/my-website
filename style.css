@@ -70,6 +70,26 @@ body {
     overflow-x: hidden
 }
 
+.btn {
+    text-decoration: none;
+    padding: 12px 14px;
+    border: 3px solid var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    letter-spacing: 1px;
+    border-radius: 40px;
+    transition: background 0.4s linear;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
 .container.active input::placeholder {
     color: #979595;
 }
@@ -84,7 +104,7 @@ body {
     position: relative;
     transition: 0.2s;
     animation: opacity 0.4s;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 /* .container.active * {
@@ -447,42 +467,6 @@ body {
 .container .main .home .side-left h4 {
     font-size: 1em;
     padding-bottom: 1em;
-}
-
-.container .main .home .side-left .btn {
-    padding: 14px;
-    border: 3px solid var(--primary-color);
-    background: transparent;
-    cursor: pointer;
-    color: var(--primary-color);
-    font-size: .9em;
-    position: relative;
-    letter-spacing: 2px;
-    overflow: hidden !important;
-}
-
-.container .main .home .side-left .btn:hover span {
-    position: relative;
-    z-index: 5;
-    color: var(--light-color);
-    transition: color 0.4s;
-}
-
-.container .main .home .side-left .btn::before {
-    content: "";
-    position: absolute;
-    background: var(--primary-color);  
-    width: 0px;
-    height: 300px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: width 0.5s linear ;
-}
-
-.container .main .home .side-left .btn:hover::before {
-    width: 300px;
 }
 
 .container .main .home .side-right img {
@@ -1147,43 +1131,8 @@ body {
 }
 
 .container .main .contact .form #btn {
-    margin-top: 10px;
-    width: 180px;
-    padding: 12px;
-    border: 3px solid var(--primary-color);
-    background: transparent;
-    cursor: pointer;
-    color: var(--primary-color);
-    font-size: 1.2em;
-    font-weight: 500;
-    position: relative;
-    overflow: hidden;
-}
-
-.container .main .contact .form #btn  span {
-    position: relative;
-    z-index: 5;
-    transition: color 0.4s;
-}
-
-.container .main .contact .form #btn::before {
-    content: "";
-    position: absolute;
-    background: var(--primary-color);  
-    width: 0px;
-    height: 800px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transition: width 0.5s linear ;
-}
-
-.container .main .contact .form #btn:is(:focus, :hover):before {
-    width: 400px;
-}
-
-.container .main .contact .form #btn:is(:hover, :focus) span {
-    color: var(--light-color);
+    border-radius: 8px;
+    margin-top: 8px;
 }
 
 /* footer */
@@ -1258,7 +1207,7 @@ body {
 
 
 
-@media (max-width: 1278px) {
+@media (max-width: 1290px) {
     .container .main .work .projects .project:nth-child(5), .container .main .work .projects .project:last-of-type {
         display: none;
     }

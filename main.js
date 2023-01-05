@@ -164,6 +164,9 @@ toggleTop.addEventListener("click", () => {
     });
 });
 
+container.classList.add("active");
+body.classList.add("active");
+
 // eventListener dark mode 
 toggleMode.addEventListener("click", () => {
     container.classList.toggle("active");
