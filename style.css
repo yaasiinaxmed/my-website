@@ -1629,12 +1629,16 @@ body {
 }
 
 @media (max-width: 360px) {
+    .container .main .contact {
+        height: 110vh;
+    }
+
     .container .main .contact .title-contact {
-        top: 210px;
+        top: 226px;
     }
 
     .container .main .contact .form {
-        top: 200px;
+        top: 218px;
     }
 
     .container .main .contact .form .msgBox .alert {
