@@ -15,6 +15,89 @@ const messageForm = document.querySelector("#message");
 const projects = document.querySelectorAll(".project");
 const alertMsg = document.querySelector(".msgBox");
 
+
+//  check Email validation
+let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+const checkEmail = (flex,grid) => {
+    if (emailForm.value.match(regeX)) {
+        flex.id = 'success';
+        setTimeout(() => {
+            sendMail();
+            flex.removeAttribute("id");
+            grid.classList.remove("success");
+            flex.classList.remove("successMessage");
+            firstName.value = "";
+            lastName.value = "";
+            emailForm.value = "";
+            messageForm.value = "";
+        },1000);
+    } else {
+        flex.id = 'error';
+    };
+};
+
+// check Empty inputs
+function checkEmpty(grid,flex){
+    if (firstName.value === "") {
+        grid.classList.add("error");
+        grid.classList.remove("success");
+    } else {
+        grid.classList.add("success");
+        grid.classList.remove("error");
+    }
+
+    if (emailForm.value === "") {
+        flex.classList.add("error");
+        flex.classList.remove("success");
+    } else {
+        flex.classList.add("success");
+        flex.classList.remove("error");
+    }
+
+    if (messageForm.value === "") {
+        flex.classList.add("errorMessage");
+        flex.classList.remove("successMessage");
+    } else {
+        flex.classList.add("successMessage");
+        flex.classList.remove("errorMessage");
+    }
+};
+
+// form submit 
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const gridInput = form.querySelector(".grid-input");
+    const flexInput = form.querySelector(".flex-input");
+    
+    checkEmpty(gridInput,flexInput);
+    checkEmail(flexInput,gridInput);
+    createAlert(flexInput.id);
+});
+
+// message send my email 
+
+function sendMail(){
+    var params = {
+        name:  firstName.value + lastName.value,
+        email: emailForm.value,
+        message: messageForm.value,
+    };
+
+    const service_id = "service_40obmmf";
+    const template_id = "template_mg90dbg";
+
+    emailjs.send(service_id,template_id,params)
+    .then((res) => {
+        firstName.value = "";
+        lastName.value = "";
+        emailForm.value = "";
+        messageForm.value = "";
+        console.log(res);
+    })
+    .catch((err) => console.log(err));
+};
+
 // window eventListener 
 window.addEventListener("scroll", checkBox);
 window.addEventListener("scroll", activeLink);
@@ -77,84 +160,6 @@ const createAlert = (id) => {
     const removeIcon = alertDiv.querySelector(".fa-xmark");
     removeIcon.addEventListener("click", () => removeAlert(alertDiv));
 };
-
-// message send my email 
-
-function sendMail(){
-    var params = {
-        name:  firstName.value + lastName.value,
-        email: emailForm.value,
-        message: messageForm.value,
-    };
-
-    const serviceID = "service_24vr37q";
-    const templateID = "template_qyv0rbd";
-
-    emailjs.send(serviceID,templateID,params)
-    .then((res) => {
-        firstName.value = "";
-        lastName.value = "";
-        emailForm.value = "";
-        messageForm.value = "";
-        console.log(res);
-    })
-    .catch((err) => console.log(err));
-};
-
-//  check Email validation
-let regeX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-const checkEmail = (flex,grid) => {
-    if (emailForm.value.match(regeX)) {
-        flex.id = 'success';
-        setTimeout(() => {
-            sendMail();
-            flex.removeAttribute("id");
-            grid.classList.remove("success");
-            flex.classList.remove("successMessage");
-        },1000);
-    } else {
-        flex.id = 'error';
-    };
-};
-
-// check Empty inputs
-function checkEmpty(grid,flex){
-    if (firstName.value === "") {
-        grid.classList.add("error");
-        grid.classList.remove("success");
-    } else {
-        grid.classList.add("success");
-        grid.classList.remove("error");
-    }
-
-    if (emailForm.value === "") {
-        flex.classList.add("error");
-        flex.classList.remove("success");
-    } else {
-        flex.classList.add("success");
-        flex.classList.remove("error");
-    }
-
-    if (messageForm.value === "") {
-        flex.classList.add("errorMessage");
-        flex.classList.remove("successMessage");
-    } else {
-        flex.classList.add("successMessage");
-        flex.classList.remove("errorMessage");
-    }
-};
-
-// form submit 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const gridInput = form.querySelector(".grid-input");
-    const flexInput = form.querySelector(".flex-input");
-
-    checkEmpty(gridInput,flexInput);
-    checkEmail(flexInput,gridInput);
-    createAlert(flexInput.id);
-});
 
 // toggle top footer 
 toggleTop.addEventListener("click", () => {

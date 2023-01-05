@@ -953,6 +953,14 @@ body {
     color: var(--primary-color);
 }
 
+.container .main .contact .form .msgBox .alert.success  {
+    font-size: 15px;
+}
+
+.container .main .contact .form .msgBox .alert.success  .column {
+    padding-right: 8px;
+}
+
 .container .main .contact .form .msgBox .alert.success  .column i {
     color: #30b90e;
 }
